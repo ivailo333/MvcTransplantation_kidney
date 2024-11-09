@@ -1,0 +1,48 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.Doctor>', който представлява колекция от обекти от клас 'Doctor'.-->
+@model MvcTransplantation_kidney.Models.Doctor
+
+<!--Задава заглавието на страницата като "Детайли", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Детайли";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Детайли" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Детайли</h1>
+
+<!--Този код генерира HTML, който показва наименованията на полетата UserId, FirstName, LastName, Specialty и техните стойности в рамките на Bootstrap структура, разделена на осем колони (по 2 колони за етикетите и по 10 за стойностите).-->
+<div>
+    <h4>Доктор</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Specialty)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Specialty)
+        </dd>
+    </dl>
+</div>
+
+<!--Този код създава центрирани хипервръзки за редактиране на доктор на базата на неговия `DoctorId` и за връщане към списъка с доктори в ASP.NET MVC.-->
+<div class="text-center">
+    <a asp-action="Edit" asp-route-id="@Model?.DoctorId">Редактирай</a> |
+    <a asp-action="Index">Обратно към списъка</a>
+</div>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\MvcTransplantation_kidney.props" />
+</Project>

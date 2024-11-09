@@ -1,0 +1,53 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.Permission>', който представлява колекция от обекти от клас 'Permission'.-->
+@model IEnumerable<MvcTransplantation_kidney.Models.Permission>
+
+<!--Задава заглавието на страницата като "Начало", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Начало";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Начало" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Начало</h1>
+
+<!--Създава параграф, центриран на страницата, който съдържа връзка с действие 'Create'.-->
+<p class="text-center">
+    <a asp-action="Create">Създай ново</a>
+</p>
+
+<!--Започва HTML таблица с клас 'table'. 'thead' секцията съдържа заглавията на колоните.-->
+<!--@Html.DisplayNameFor(model => model.UserId) динамично извежда името на свойството 'UserId' като заглавие на колоната.-->
+<!--@Html.DisplayNameFor(model => model.PermissionType) динамично извежда името на свойството 'PermissionType' като заглавие на колоната.-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermissionType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Започва цикъл 'foreach', който преминава през всеки обект в модела.-->
+@foreach (var item in Model) {
+            <!--За всяко разрешение (представено като 'item'), кодът създава нов ред (<tr>). В първата клетка (<td>) се показва ИД на потребителя. Във втората - типа на разрешението.-->
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermissionType)
+            </td>
+            <td>
+                    <!--Във третата клетка има три връзки: за редакция, детайли и изтриване на съответното разрешение.-->
+                <a asp-action="Edit" asp-route-id="@item.PermissionId">Редактирай</a>
+                <a asp-action="Details" asp-route-id="@item.PermissionId">Детайли</a>
+                <a asp-action="Delete" asp-route-id="@item.PermissionId">Изтрий</a>
+            </td>
+        </tr>
+}
+        <!--Цикълът 'foreach' завършва, и таблицата се затваря с </tbody> и </table>. Всички разрешения ще бъдат показани в редове на тази таблица-->
+    </tbody>
+</table>

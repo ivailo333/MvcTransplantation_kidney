@@ -1,0 +1,67 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.Message>', който представлява колекция от обекти от клас 'Message'.-->
+@model IEnumerable<MvcTransplantation_kidney.Models.Message>
+
+<!--Задава заглавието на страницата като "Начало", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Начало";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Начало" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Начало</h1>
+
+<!--Създава параграф, центриран на страницата, който съдържа връзка с действие 'Create'.-->
+<p class="text-center">
+    <a asp-action="Create">Създай ново</a>
+</p>
+
+<!--Започва HTML таблица с клас 'table'. 'thead' секцията съдържа заглавията на колоните.-->
+<!--@Html.DisplayNameFor(model => model.DoctorId) динамично извежда името на свойството 'DoctorId' като заглавие на колоната.-->
+<!--@Html.DisplayNameFor(model => model.PatientId) динамично извежда името на свойството 'PatientId' като заглавие на колоната.-->
+<!--@Html.DisplayNameFor(model => model.MessageText) динамично извежда името на свойството 'MessageText' като заглавие на колоната.-->
+<!--@Html.DisplayNameFor(model => model.SentDate) динамично извежда името на свойството 'SentDate' като заглавие на колоната.-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MessageText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SentDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Започва цикъл 'foreach', който преминава през всеки обект в модела.-->
+@foreach (var item in Model) {
+            <!--За всяка съобщение (представено като 'item'), кодът създава нов ред (<tr>). В първата клетка (<td>) се показва ИД на доктора, във втората - ИД на пациента, в третата - текста на съобщението, четвъртата - датата на изпращане на съобщението.-->
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.DoctorId)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.PatientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SentDate)
+            </td>
+            <td>
+                    <!--Във петата клетка има три връзки: за редакция, детайли и изтриване на съответното съобщение.-->
+                <a asp-action="Edit" asp-route-id="@item.MessageId">Редактирай</a>
+                <a asp-action="Details" asp-route-id="@item.MessageId">Детайли</a>
+                <a asp-action="Delete" asp-route-id="@item.MessageId">Изтрий</a>
+            </td>
+        </tr>
+}
+        <!--Цикълът 'foreach' завършва, и таблицата се затваря с </tbody> и </table>. Всички съобщения ще бъдат показани в редове на тази таблица-->
+    </tbody>
+</table>

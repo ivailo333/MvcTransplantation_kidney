@@ -1,0 +1,67 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.MedicalRecord>', който представлява колекция от обекти от клас 'MedicalRecord'.-->
+@model IEnumerable<MvcTransplantation_kidney.Models.MedicalRecord>
+
+<!--Задава заглавието на страницата като "Начало", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Начало";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Начало" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Начало</h1>
+
+<!--Създава параграф, центриран на страницата, който съдържа връзка с действие 'Create'.-->
+<p class="text-center">
+    <a asp-action="Create">Създай нов</a>
+</p>
+
+<!--Започва HTML таблица с клас 'table'. 'thead' секцията съдържа заглавията на колоните.-->
+<!--@Html.DisplayNameFor(model => model.PatientId) динамично извежда името на свойството 'PatientId' като заглавие на колоната.-->
+<!--@Html.DisplayNameFor(model => model.DoctorId) динамично извежда името на свойството 'DoctorId' като заглавие на колоната.-->
+<!--@Html.DisplayNameFor(model => model.RecordDate) динамично извежда името на свойството 'RecordDate' като заглавие на колоната.-->
+<!--@Html.DisplayNameFor(model => model.Description) динамично извежда името на свойството 'Description' като заглавие на колоната.-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Започва цикъл 'foreach', който преминава през всеки обект в модела.-->
+@foreach (var item in Model) {
+            <!--За всеки медицински запис (представен като 'item'), кодът създава нов ред (<tr>). В първата клетка (<td>) се показва ИД на пациента, във втората - ИД на доктора, в третата - датата на записа, четвъртата - описанието.-->
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                    <!--Във петата клетка има три връзки: за редакция, детайли и изтриване на съответния медицински запис.-->
+                <a asp-action="Edit" asp-route-id="@item.RecordId">Редактирай</a>
+                <a asp-action="Details" asp-route-id="@item.RecordId">Детайли</a>
+                <a asp-action="Delete" asp-route-id="@item.RecordId">Изтрий</a>
+            </td>
+        </tr>
+}
+        <!--Цикълът 'foreach' завършва, и таблицата се затваря с </tbody> и </table>. Всички медицински записи ще бъдат показани в редове на тази таблица-->
+    </tbody>
+</table>

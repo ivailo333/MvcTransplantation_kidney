@@ -1,0 +1,54 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.MedicalRecord>', който представлява колекция от обекти от клас 'MedicalRecord'.-->
+@model MvcTransplantation_kidney.Models.MedicalRecord
+
+<!--Задава заглавието на страницата като "Създаване", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Създаване";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Създаване" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Създаване</h1>
+
+<!--Този код представлява формуляр за създаване на нов медицински запис. Формата включва поле за въвеждане на ИД на пациента, ИД на доктора, поле за датата на записа, поле за описание, с вградена валидация, и бутон за изпращане на данните към сървъра.-->
+<h4 class="text-center">Медицински запис</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PatientId" class="control-label"></label>
+                <select asp-for="PatientId" class="form-control" asp-items="ViewBag.Patients"></select>
+                <span asp-validation-for="PatientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoctorId" class="control-label"></label>
+                <select asp-for="DoctorId" class="form-control" asp-items="ViewBag.Doctors"></select>
+                <span asp-validation-for="DoctorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecordDate" class="control-label"></label>
+                <input asp-for="RecordDate" class="form-control" />
+                <span asp-validation-for="RecordDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Създай" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--Кодът показва центриран линк, който връща потребителя към основния списък от елементи на страницата, асоциирана с действието 'Index'.-->
+<div class="text-center">
+    <a asp-action="Index">Обратно към списъка</a>
+</div>
+
+<!--Включва частичен изглед със скриптове за валидация на клиентската страна в специфична секция Scripts на страницата. Това позволява валидацията на формите да работи правилно, като добавя необходимите JavaScript функционалности.-->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,57 @@
+/* _content/MvcTransplantation_kidney/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+/*Този код стилизира елементите с клас `navbar-brand`, като центрира текста, позволява нормално пренасяне на редове и разбиване на думите при нужда.*/
+a.navbar-brand[b-4nryn4x2wg] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/*Този код задава син цвят на всички линкове (`<a>` елементи) в страницата.*/
+a[b-4nryn4x2wg] {
+  color: #0077cc;
+}
+
+/*Този код стилизира основните бутони (`.btn-primary`), като задава бял текст, син фон и синя рамка.*/
+.btn-primary[b-4nryn4x2wg] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/*Този код стилизира активните елементи в навигационни менюта тип "pills", като им задава бял текст, син фон и синя рамка.*/
+.nav-pills .nav-link.active[b-4nryn4x2wg], .nav-pills .show > .nav-link[b-4nryn4x2wg] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/*Този код добавя светлосива линия с дебелина 1 пиксел отгоре (`.border-top`) и отдолу (`.border-bottom`) на елементите.*/
+.border-top[b-4nryn4x2wg] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-4nryn4x2wg] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/*Този код добавя леко сенчест ефект на елементите с клас `.box-shadow`, състоящ се от малко разширение и размазване на сянката.*/
+.box-shadow[b-4nryn4x2wg] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+/*Този код задава размер на шрифта от 1 рем за бутони с клас `accept-policy` и наследява височината на реда от родителския елемент.*/
+button.accept-policy[b-4nryn4x2wg] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/*Този код позиционира футъра на дъното на страницата, задава ширина 100%, предотвратява пренасяне на текста и задава височина на реда 60 пиксела.*/
+.footer[b-4nryn4x2wg] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}

@@ -1,0 +1,48 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.Patient>', който представлява колекция от обекти от клас 'Patient'.-->
+@model MvcTransplantation_kidney.Models.Patient
+
+<!--Задава заглавието на страницата като "Детайли", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Детайли";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Детайли" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Детайли</h1>
+
+<!--Този код генерира HTML, който показва наименованията на полетата FirstName, LastName, DateOfBirth, TransplantDate и техните стойности в рамките на Bootstrap структура, разделена на осем колони (по 2 колони за етикетите и по 10 за стойностите).-->
+<div>
+    <h4>Пациент</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TransplantDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TransplantDate)
+        </dd>
+    </dl>
+</div>
+
+<!--Този код създава центрирани хипервръзки за редактиране на пациента на базата на неговия `PatientId` и за връщане към списъка с пациенти в ASP.NET MVC.-->
+<div class="text-center">
+    <a asp-action="Edit" asp-route-id="@Model?.PatientId">Редактирай</a>
+    <a asp-action="Index">Обратно към списъка</a>
+</div>

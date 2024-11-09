@@ -1,0 +1,50 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.MedicalRecord>', който представлява колекция от обекти от клас 'MedicalRecord'.-->
+@model MvcTransplantation_kidney.Models.MedicalRecord
+
+<!--Задава заглавието на страницата като "Изтриване", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Изтрий";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Изтриване" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Изтрий</h1>
+
+<!--Кодът показва потвърдително съобщение за изтриване на медицински запис и визуализира ИД на пациента, ИД на доктора, датата на записа и описанието, свързани с този запис, който ще бъде изтрит.-->
+<h3 class="text-center">Сигурни ли сте, че искате да изтриете това?</h3>
+<div>
+    <h4>Медицински запис</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PatientId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PatientId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DoctorId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DoctorId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RecordDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RecordDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+    
+    <!--Кодът представлява формуляр за изтриване на медицински запис. Скрити полета предават ID на записа, а бутонът "Изтрий" изпраща заявка за изтриване. Има и линк за връщане към списъка с медицинските записи.-->
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RecordId" />
+        <input type="submit" value="Изтрий" class="btn btn-danger" />
+        <a asp-action="Index">Обратно към списъка</a>
+    </form>
+</div>
