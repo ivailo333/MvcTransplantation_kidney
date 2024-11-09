@@ -1,0 +1,38 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.User>', който представлява колекция от обекти от клас 'User'.-->
+@model MvcTransplantation_kidney.Models.User
+
+<!--Задава заглавието на страницата като "Изтрий", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Изтриване";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Изтрий" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Изтриване</h1>
+
+<!--Кодът показва потвърдително съобщение за изтриване на потребител и визуализира потребителското име и ИД на ролята, свързана с този потребител, който ще бъде изтрит.-->
+<h3 class="text-center">Сигурни ли сте, че искате да изтриете това?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RoleId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RoleId)
+        </dd>
+    </dl>
+
+    <!--Кодът представлява формуляр за изтриване на потребител. Скрити полета предават ID на потребителя, а бутонът "Изтрий" изпраща заявка за изтриване. Има и линк за връщане към списъка с потребители.-->
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="UserId" />
+        <input type="submit" value="Изтрий" class="btn btn-danger" /> 
+        <a asp-action="Index">Обратно към списъка</a>
+    </form>
+</div>

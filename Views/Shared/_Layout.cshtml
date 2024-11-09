@@ -1,0 +1,84 @@
+﻿<!--Този код представлява заглавната част на HTML документ в ASP.NET MVC приложение, 
+
+която включва метаданни за езика и символния набор, заглавие на страницата с динамична част, както и връзки към стилови файлове, включително Bootstrap и персонализирани CSS, 
+с използване на кеширане чрез версия на базата на съдържание.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Информационна система за Диспансера за бъбречна трансплантация</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MvcTransplantation_kidney.styles.css" asp-append-version="true" />
+</head>
+
+<!--Този код създава навигационна лента в уеб приложение, използвайки Bootstrap и ASP.NET MVC. 
+    Лентата съдържа връзки към различни контролери и действия, като "Начало", "Потребители", "Роли", "Пациенти" и други, за лесна навигация между различните секции на приложението. 
+
+Навигационната лента е респонсивна и включва бутон за свиване на менюто при малки екрани.-->
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light bg-light border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Информационна система за ДБТ</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Потребители</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Roles" asp-action="Index">Роли</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Permissions" asp-action="Index">Разрешения</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Patients" asp-action="Index">Пациенти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Doctors" asp-action="Index">Доктори</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="MedicalRecords" asp-action="Index">Медицински записи</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Messages" asp-action="Index">Съобщения</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Поверителност</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--Този код създава контейнер с основно съдържание на страницата, като използва метода 'RenderBody()' за вмъкване на съдържанието на конкретен изглед в зададения layout.-->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!--Този код създава футър с текст за авторски права и линк към страницата за поверителност, след което включва JavaScript библиотеки като jQuery и Bootstrap, 
+
+    както и персонализиран скрипт, с възможност за динамично добавяне на допълнителни скриптове чрез секцията `Scripts`.-->
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Информационна система за Диспансера за бъбречна трансплантация - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

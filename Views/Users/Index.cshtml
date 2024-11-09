@@ -1,0 +1,53 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.User>', който представлява колекция от обекти от клас 'User'.-->
+@model IEnumerable<MvcTransplantation_kidney.Models.User>
+
+<!--Задава заглавието на страницата като "Начало", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Начало";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Начало" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Начало</h1>
+
+<!--Създава параграф, центриран на страницата, който съдържа връзка с действие 'Create'.-->
+<p class="text-center">
+    <a asp-action="Create">Създай нов</a>
+</p>
+
+<!--Започва HTML таблица с клас 'table'. 'thead' секцията съдържа заглавията на колоните.-->
+<!--@Html.DisplayNameFor(model => model.UserName) динамично извежда името на свойството 'UserName' като заглавие на колоната.-->
+<!--@Html.DisplayNameFor(model => model.RoleId) динамично извежда името на свойството 'RoleId' като заглавие на колоната.-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Започва цикъл 'foreach', който преминава през всеки обект в модела.-->
+@foreach (var item in Model) {
+            <!--За всяко потребителско име (представена като 'item'), кодът създава нов ред (<tr>). В първата клетка (<td>) се показва потребителското име, а във втората - ИД на ролята.-->
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleId)
+            </td>
+            <td>
+                    <!--Във третата клетка има три връзки: за редакция, детайли и изтриване на съответното потребителско име.-->
+                <a asp-action="Edit" asp-route-id="@item.UserId">Редактирай</a>
+                <a asp-action="Details" asp-route-id="@item.UserId">Детайли</a>
+                <a asp-action="Delete" asp-route-id="@item.UserId">Изтрий</a>
+            </td>
+        </tr>
+}
+        <!--Цикълът 'foreach' завършва, и таблицата се затваря с </tbody> и </table>. Всички потребителски имена ще бъдат показани в редове на тази таблица-->
+    </tbody>
+</table>

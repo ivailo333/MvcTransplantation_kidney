@@ -1,0 +1,49 @@
+﻿<!-- Страницата работи с модел от тип 'IEnumerable<MvcTransplantation_kidney.Models.User>', който представлява колекция от обекти от клас 'User'.-->
+@model MvcTransplantation_kidney.Models.User
+
+<!--Задава заглавието на страницата като "Създаване", използвайки 'ViewData' за предаване на данни от контролера към изгледа.-->
+@{
+    ViewData["Title"] = "Създаване";
+}
+
+<!--Заглавие на страницата (Heading 1) с текст "Създаване" и го центрира с клас 'text-center'.-->
+<h1 class="text-center">Създаване</h1>
+
+<!--Този код представлява формуляр за създаване на нов потребител. Формата включва поле за въвеждане на потребителско име, поле за парола и поле за ИД на ролята, с вградена валидация, и бутон за изпращане на данните към сървъра.-->
+<h4 class="text-center">Потребител</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleId" class="control-label"></label>
+                <select asp-for="RoleId" class="form-control" asp-items="ViewBag.Roles"></select>
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Създай" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--Кодът показва центриран линк, който връща потребителя към основния списък от елементи на страницата, асоциирана с действието 'Index'.-->
+<div class="text-center">
+    <a asp-action="Index">Обратно към списъка</a>
+</div>
+
+<!--Включва частичен изглед със скриптове за валидация на клиентската страна в специфична секция Scripts на страницата. Това позволява валидацията на формите да работи правилно, като добавя необходимите JavaScript функционалности.-->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
